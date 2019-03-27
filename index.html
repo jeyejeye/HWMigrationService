@@ -22,47 +22,89 @@
     <div class="container">
         <!-- INPUT BLOCK -->
         <div class="inputPersonForm">
-            <h2>Add new Person</h2>
-            <div class="table__header">
-                <div class="row">
-                    <div class="col-2">ID</div>
-                    <div class="col-2">Name</div>
-                    <div class="col-1">Age</div>
-                    <div class="col-1">Passport</div>
-                    <div class="col-2">Gender</div>
-                    <div class="col-2">Payment</div>
-                    <div class="col-2">Healty</div>
+            <h2>Add new Persons</h2>
+            <div class="row">
+                <div class="col-1">
+                    <h3>Quantity</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="qty" class="inputPersonForm__input" placeholder="qty">
+                </div>
+                <div class="col-3">
+                        messege
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-2">
-                    <input type="text" id="id" class="inputPersonForm__input" placeholder="id">
+                <div class="col-1">
+                    <h3>Name</h3>
                 </div>
-                <div class="col-2">
+                <div class="col-8">
                     <input type="text" id="name" class="inputPersonForm__input" placeholder="Name">
                 </div>
-                <div class="col-1">
-                    <input type="text" id="age" class="inputPersonForm__input" placeholder="Age">
-                </div>
-                <div class="col-1">
-                    <input type="text" id="hasPassport" class="inputPersonForm__input" placeholder="?">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="gender" class="inputPersonForm__input" placeholder="Male / Female">
-                </div>
-                <div class="col-2">
-                    <input type="text" id="payment" class="inputPersonForm__input" placeholder="900 - 1100$">
-                </div>
-                <div class="col-1">
-                    <input type="text" id="healty" class="inputPersonForm__input" placeholder="1 -100%">
-                </div>
-                <div class="col-1">
-                    <button class="inputPersonForm__button" id="addNewPerson">+</button>
+                <div class="col-3">
+                    messege
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="col-1">
+                    <h3>Age</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="age" class="inputPersonForm__input" placeholder="Age">
+                </div>
+                <div class="col-3">
+                    messege
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <h3>Passport</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="passport" class="inputPersonForm__input" placeholder="Passport">
+                </div>
+                <div class="col-3">
+                    messege
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <h3>Gender</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="gender" class="inputPersonForm__input" placeholder="gender">
+                </div>
+                <div class="col-3">
+                    messege
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <h3>Payment</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="payment" class="inputPersonForm__input" placeholder="payment">
+                </div>
+                <div class="col-3">
+                    messege
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <h3>Health</h3>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="health" class="inputPersonForm__input" placeholder="Health">
+                </div>
+                <div class="col-3">
+                    messege
+                </div>
+            </div>
+            <div class="row">
+                <button class="inputPersonForm__button blue" id="clear">Generate</button>
+                <button class="inputPersonForm__button red" id="clear">Clear</button>
+                <button class="inputPersonForm__button green" id="start">Start</button>
+            </div>
         </div>
 
         <!-- Configuration DATA Block-->
@@ -171,9 +213,7 @@
                     58%
                 </div>
             </div>
-            <div class="row">
-                <button class="configurationData__btn" id="start">Start</button>
-            </div>
+
         </div>
         <!-- STATUS BLOCK-->
         <div class="personStatus">
