@@ -14,7 +14,7 @@ Configuration.prototype.clear = function () {
     this.healthies = '';
 	this.quantityPersons = '';
 	
-	//Разпарсеные на массивы строки из инпутов
+	//Раcпарсеные на массивы строки из инпутов
 	this.arrNames = [];
     this.arrAges = [];
     this.arrIsHasPassport = [];
@@ -40,24 +40,50 @@ Configuration.prototype.init = function (names, ages, isHasPassport, genders, pa
 }
 
 Configuration.prototype.setDefaultQuantityPersons() {
+	this.valQuantityPersons = 2;
+	this.quantityPersons = this.valQuantityPersons.toString;
 }
 
 Configuration.prototype.setDefaultNames() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrNames.push(getDefaultName());
+	}
+	this.names = this.arrNames.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefaultAges() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrAges.push(getDefaultAge());
+	}
+	this.ages = this.arrAges.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefaultIsHasPassport() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrIsHasPassport.push(getDefaultIsHasPassport());
+	}
+	this.isHasPassport = this.arrIsHasPassport.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefaultGenders() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrGenders.push(getDefaultGender());
+	}
+	this.genders = this.arrGenders.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefaultPayments() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrPayments.push(getDefaultPayment());
+	}
+	this.payments = this.arrPayments.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefaultHealthies() {
+	for (let i = 0; i < this.valQuantityPersons; i++) {
+		this.arrHealthies.push(getDefaultHealthy());
+	}
+	this.healthies = this.arrHealthies.join(this.SEPARATOR);
 }
 
 Configuration.prototype.setDefault() {

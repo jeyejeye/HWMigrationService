@@ -1,5 +1,3 @@
-const allPersons = [];
-
 function Person(serialNum) {
     this.id = `${serialNum}_${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     this.name = null;
@@ -20,10 +18,12 @@ Person.prototype.init = function (name, age, isHasPassport, gender, payment, hea
 };
 
 Person.prototype.initDefault = function () {
-    this.name = getDefaultName();
-    this.age = getDefaultAge();
-    this.isHasPassport = getDefaultIsHasPassport();
-    this.gender = getDefaultGender();
-    this.payment = getDefaultPayment();
-    this.healthy = getDefaultHealthy();
+	this.init(
+		getDefaultName(),
+		getDefaultAge(),
+		getDefaultIsHasPassport(),
+		getDefaultGender(),
+		getDefaultPayment(),
+		getDefaultHealthy()
+	);
 };
