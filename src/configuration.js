@@ -40,7 +40,7 @@ Configuration.prototype.init = function (names, ages, isHasPassport, genders, pa
 
 Configuration.prototype.setDefaultQuantityPersons = function() {
 	this.valQuantityPersons = 2;
-	this.quantityPersons = this.valQuantityPersons.toString;
+	this.quantityPersons = this.valQuantityPersons.toString();
 }
 
 Configuration.prototype.setDefaultNames= function() {

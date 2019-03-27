@@ -48,6 +48,7 @@ PersonsView.prototype.getPersonsData = function (){
 }
 
 PersonsView.prototype.renderPersonsData = function (data){
+    console.log(data);
     this.inputQty.value = data.quantityPersons;
     this.inputName.value = data.names;
     this.inputAge.value = data.ages;
@@ -69,7 +70,7 @@ PersonsView.prototype.clearPersonsData = function (){
 }
 
 PersonsView.prototype.renderConfigurationData = function (){
-    
+    let dataRow
 }
 
 
