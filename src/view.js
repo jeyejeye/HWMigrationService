@@ -17,8 +17,9 @@ inputPersonForm.addEventListener('click', function(event) {
         personsView.clearPersonsData();
     }
     if (target.id === 'start') {
-        
-    }
+        let personsData = personsView.getPersonsData();
+        configuration.init(personsData.names,personsData.ages,personsData.isHasPassport,personsData.genders,personsData.payments,personsData.healthies,personsData.quantityPersons);
+       }
 });
 
 
@@ -35,15 +36,15 @@ function PersonsView () {
 }
 // personsView.getPersonsData()
 PersonsView.prototype.getPersonsData = function (){
-    // let inputQty = this.inputQty.value;
-    // let inputName = this.inputName.value;
-    // let inputAge = inputPersonForm.querySelector("#age").value;
-    // let inputPassport = inputPersonForm.querySelector("#passport").value;
-    // let inputGender = inputPersonForm.querySelector("#gender").value;
-    // let inputPayment = inputPersonForm.querySelector("#payment").value;
-    // let inputHealth = inputPersonForm.querySelector("#health").value;
-    
-
+    return {
+        quantityPersons: this.inputQty.value,
+		names: this.inputName.value,
+		ages: this.inputAge.value,
+		isHasPassport: this.inputPassport.value,
+		genders: this.inputGender.value,
+		payments: this.inputPayment.value,
+		healthies: this.inputHealth.value,
+    }  
 }
 
 PersonsView.prototype.renderPersonsData = function (data){
