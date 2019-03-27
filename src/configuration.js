@@ -1,7 +1,6 @@
 function Configuration () {
 	this.SEPARATOR = ',';
-	
-	this clear();
+	this.clear();
 }
 
 Configuration.prototype.clear = function () {
@@ -39,56 +38,55 @@ Configuration.prototype.init = function (names, ages, isHasPassport, genders, pa
 	this.quantityPersons = quantityPersons;	
 }
 
-Configuration.prototype.setDefaultQuantityPersons() {
+Configuration.prototype.setDefaultQuantityPersons = function() {
 	this.valQuantityPersons = 2;
 	this.quantityPersons = this.valQuantityPersons.toString;
 }
 
-Configuration.prototype.setDefaultNames() {
+Configuration.prototype.setDefaultNames= function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrNames.push(getDefaultName());
 	}
 	this.names = this.arrNames.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefaultAges() {
+Configuration.prototype.setDefaultAges =function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrAges.push(getDefaultAge());
 	}
 	this.ages = this.arrAges.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefaultIsHasPassport() {
+Configuration.prototype.setDefaultIsHasPassport =function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrIsHasPassport.push(getDefaultIsHasPassport());
 	}
 	this.isHasPassport = this.arrIsHasPassport.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefaultGenders() {
+Configuration.prototype.setDefaultGenders =function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrGenders.push(getDefaultGender());
 	}
 	this.genders = this.arrGenders.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefaultPayments() {
+Configuration.prototype.setDefaultPayments = function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrPayments.push(getDefaultPayment());
 	}
 	this.payments = this.arrPayments.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefaultHealthies() {
+Configuration.prototype.setDefaultHealthies =function() {
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		this.arrHealthies.push(getDefaultHealthy());
 	}
 	this.healthies = this.arrHealthies.join(this.SEPARATOR);
 }
 
-Configuration.prototype.setDefault() {
+Configuration.prototype.setDefault =function() {
 	this.clear();
-	
 	this.setDefaultQuantityPersons();
 	this.setDefaultNames();
 	this.setDefaultAges();
@@ -232,7 +230,7 @@ Configuration.prototype.verify = function() {
 	return true;	
 }
 
-Configuration.prototype.getPersons () {
+Configuration.prototype.getPersons = function() {
 	const rez = [];
 	
 	if (!verify()) {
