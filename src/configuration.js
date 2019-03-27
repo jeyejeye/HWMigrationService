@@ -233,18 +233,18 @@ Configuration.prototype.verify = function() {
 Configuration.prototype.getPersons = function() {
 	const rez = [];
 	
-	if (!verify()) {
+	if (!this.verify()) {
 		return rez;
 	}
 	
 	for (let i = 0; i < this.valQuantityPersons; i++) {
-		const person = new Person(allPerson.length + 1);
+		const person = new Person(allPersons.length + 1);
 		person.name = this.arrNames[i].trim();
 		person.age = this.arrAges[i];
 		person.isHasPassport = this.arrIsHasPassport[i];
 		person.gender = this.arrGenders[i];
-		person.payment = this.arrHealthies[i];
-		person.healthy = this.arrHealthie[i];
+		person.payment = this.arrPayments[i];
+		person.healthy = this.arrHealthies[i];
 		
 		rez.push(person);
 		allPersons.push(person);

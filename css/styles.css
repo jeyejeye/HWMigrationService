@@ -212,6 +212,7 @@ button {
   font-size: 0.9em;
   border: 1px solid #F2F2F2;
   border-radius: 4px;
+  visibility: hidden;
 }
 .personStatus__data {
   font-size: 0.9em;
@@ -239,5 +240,5 @@ button {
   border: 1px solid #F2F2F2;
   border-radius: 4px;
   border-radius: 50%;
-  background-color: #5BCF00;
+  background-color: yellow;
 }

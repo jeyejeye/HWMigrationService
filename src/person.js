@@ -1,5 +1,6 @@
 function Person(serialNum) {
-    this.id = `${serialNum}_${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    var dt = new Date();
+    this.id = `${serialNum}_${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`;
     this.name = null;
     this.age = null;
     this.isHasPassport = null;

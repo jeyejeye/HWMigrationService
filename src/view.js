@@ -15,11 +15,16 @@ inputPersonForm.addEventListener('click', function(event) {
     if (target.id === 'clear') {
         configuration.clear(); 
         personsView.clearPersonsData();
+        personsView.renderConfigurationData();
+        personsView.renderPersonStatus();
     }
     if (target.id === 'start') {
         let personsData = personsView.getPersonsData();
         configuration.init(personsData.names,personsData.ages,personsData.isHasPassport,personsData.genders,personsData.payments,personsData.healthies,personsData.quantityPersons);
-       }
+        let personArr = configuration.getPersons();
+        personsView.renderConfigurationData(personArr);
+        personsView.renderPersonStatus(personArr);
+    }
 });
 
 
@@ -31,6 +36,8 @@ function PersonsView () {
     this.inputGender = inputPersonForm.querySelector("#gender");
     this.inputPayment = inputPersonForm.querySelector("#payment");
     this.inputHealth = inputPersonForm.querySelector("#health");
+    this.configurationData = document.querySelector("#configurationData");
+    this.personStatus = document.querySelector("#personStatus");
 
 
 }
@@ -48,7 +55,6 @@ PersonsView.prototype.getPersonsData = function (){
 }
 
 PersonsView.prototype.renderPersonsData = function (data){
-    console.log(data);
     this.inputQty.value = data.quantityPersons;
     this.inputName.value = data.names;
     this.inputAge.value = data.ages;
@@ -67,13 +73,119 @@ PersonsView.prototype.clearPersonsData = function (){
     this.inputGender.value = '';
     this.inputPayment.value = '';
     this.inputHealth.value = '';
-}
-
-PersonsView.prototype.renderConfigurationData = function (){
-    let dataRow
-}
-
-
-PersonsView.prototype.renderConfigurationData = function (){
     
+}
+
+PersonsView.prototype.renderConfigurationData = function (personArr){
+    let htmlData = `<h2>Configuration</h2>
+    <div class="table__header">
+        <div class="row">
+            <div class="col-2">ID</div>
+            <div class="col-2">Name</div>
+            <div class="col-1">Age</div>
+            <div class="col-1">Passport</div>
+            <div class="col-2">Gender</div>
+            <div class="col-2">Payment</div>
+            <div class="col-2">Healty</div>
+        </div>
+    </div>`;    
+    if (personArr){     
+        for(let i =0; i < personArr.length; i++){
+            htmlData += `<div class="row configurationData__Row">
+                <div class="col-2">
+                    ${personArr[i].id}
+                </div>
+                <div class="col-2">
+                    ${personArr[i].name}
+                </div>
+                <div class="col-1">
+                    ${personArr[i].age}
+                </div>
+                <div class="col-1">
+                    ${personArr[i].isHasPassport}
+                </div>
+                <div class="col-2" >
+                ${personArr[i].gender}
+                </div>
+                <div class="col-2" >
+                ${personArr[i].payment}$
+                </div>
+                <div class="col-2" >
+                ${personArr[i].healthy}%
+                </div>
+            </div>`;      
+        }
+    }
+    
+    configurationData.innerHTML = htmlData;
+}
+
+
+PersonsView.prototype.renderPersonStatus = function (personArr){
+    let htmlData = '';
+    this.personStatus.style.visibility = "hidden";
+
+    if (personArr &&  personArr.length > 0){ 
+        this.personStatus.style.visibility = "visible";     
+        for(let i =0; i < personArr.length; i++){
+            htmlData += `<div class="row" id="${personArr[i].id}">
+            <div class="col-2 border">
+                Id: ${personArr[i].id} <br>
+                Name: ${personArr[i].name} <br>
+                Age:  ${personArr[i].age} <br>
+                Passport: ${personArr[i].isHasPassport} <br>
+                Gender: ${personArr[i].gender} <br>
+                Payment: ${personArr[i].payment}$ <br>
+                Healty: ${personArr[i].healthy}%
+            </div>
+            <div class="col-10">
+                <div class="personStatus__block">
+                    <h3>Migration Service</h3>
+                </div>
+                <div class="row">
+                    <div class="col-4 personStatus__block">
+                        <h4>Police Department</h4>
+                        <div class="row">
+                            <div class="col-4">
+                                Age
+                                <div class="personStatus__status"></div>
+                            </div>
+                            <div class="col-4">
+                                Gender + Age
+                                <div class="personStatus__status"></div>
+                            </div>
+                            <div class="col-4">
+                                Passport
+                                <div class="personStatus__status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 personStatus__block">
+                        <h4>Medical Department</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                Health
+                                <div class="personStatus__status"></div>
+                            </div>
+                            <div class="col-6">
+                                Health +Gender
+                                <div class="personStatus__status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 personStatus__block">
+                        <h4>Bank Department</h4>
+                        <div class="row">
+                            <div class="col-12">
+                                Gender + Payment
+                                <div class="personStatus__status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;      
+        }
+    }
+    this.personStatus.innerHTML = htmlData;
 }
