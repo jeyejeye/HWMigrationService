@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework_12</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <h1>Persons</h1>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="container">
+        <!-- INPUT BLOCK -->
+        <div class="inputPersonForm">
+            <h2>Add new Person</h2>
+            <div class="table__header">
+                <div class="row">
+                    <div class="col-2">ID</div>
+                    <div class="col-2">Name</div>
+                    <div class="col-1">Age</div>
+                    <div class="col-1">Passport</div>
+                    <div class="col-2">Gender</div>
+                    <div class="col-2">Payment</div>
+                    <div class="col-2">Healty</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <input type="text" id="id" class="inputPersonForm__input" placeholder="id">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="name" class="inputPersonForm__input" placeholder="Name">
+                </div>
+                <div class="col-1">
+                    <input type="text" id="age" class="inputPersonForm__input" placeholder="Age">
+                </div>
+                <div class="col-1">
+                    <input type="text" id="hasPassport" class="inputPersonForm__input" placeholder="?">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="gender" class="inputPersonForm__input" placeholder="Male / Female">
+                </div>
+                <div class="col-2">
+                    <input type="text" id="payment" class="inputPersonForm__input" placeholder="900 - 1100$">
+                </div>
+                <div class="col-1">
+                    <input type="text" id="healty" class="inputPersonForm__input" placeholder="1 -100%">
+                </div>
+                <div class="col-1">
+                    <button class="inputPersonForm__button" id="addNewPerson">+</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Configuration DATA Block-->
+        <div class="configurationData">
+            <h2>Configuration</h2>
+            <div class="table__header">
+                <div class="row">
+                    <div class="col-2">ID</div>
+                    <div class="col-2">Name</div>
+                    <div class="col-1">Age</div>
+                    <div class="col-1">Passport</div>
+                    <div class="col-2">Gender</div>
+                    <div class="col-2">Payment</div>
+                    <div class="col-2">Healty</div>
+                </div>
+            </div>
+            <div class="row configurationData__Row">
+                <div class="col-2" data-src="id">
+                    1_27_03_2019_14_34
+                </div>
+                <div class="col-2" data-src="name">
+                    Dmitriy Medvedev
+                </div>
+                <div class="col-1" data-src="age">
+                    25
+                </div>
+                <div class="col-1" data-src="passport">
+                    true
+                </div>
+                <div class="col-2" data-src="gender">
+                    Male
+                </div>
+                <div class="col-2" data-src="payment">
+                    1100$
+                </div>
+                <div class="col-2" data-src="healty">
+                    98%
+                </div>
+            </div>
+            <div class="row configurationData__Row">
+                <div class="col-2" data-src="id">
+                    2_27_03_2019_14_35
+                </div>
+                <div class="col-2" data-src="name">
+                    Tina Karol
+                </div>
+                <div class="col-1" data-src="age">
+                    33
+                </div>
+                <div class="col-1" data-src="passport">
+                    true
+                </div>
+                <div class="col-2" data-src="gender">
+                    Female
+                </div>
+                <div class="col-2" data-src="payment">
+                    1100$
+                </div>
+                <div class="col-2" data-src="healty">
+                    98%
+                </div>
+            </div>
+            <div class="row configurationData__Row">
+                <div class="col-2" data-src="id">
+                    3_27_03_2019_14_35
+                </div>
+                <div class="col-2" data-src="name">
+                    Demi Moor
+                </div>
+                <div class="col-1" data-src="age">
+                    42
+                </div>
+                <div class="col-1" data-src="passport">
+                    true
+                </div>
+                <div class="col-2" data-src="gender">
+                    Female
+                </div>
+                <div class="col-2" data-src="payment">
+                    950$
+                </div>
+                <div class="col-2" data-src="healty">
+                    75%
+                </div>
+            </div>
+            <div class="row configurationData__Row">
+                <div class="col-2" data-src="id">
+                    1_27_03_2019_14_34
+                </div>
+                <div class="col-2" data-src="name">
+                    Donald Tramp
+                </div>
+                <div class="col-1" data-src="age">
+                    75
+                </div>
+                <div class="col-1" data-src="passport">
+                    false
+                </div>
+                <div class="col-2" data-src="gender">
+                    Male
+                </div>
+                <div class="col-2" data-src="payment">
+                    1000$
+                </div>
+                <div class="col-2" data-src="healty">
+                    58%
+                </div>
+            </div>
+            <div class="row">
+                <button class="configurationData__btn" id="start">Start</button>
+            </div>
+        </div>
+        <!-- STATUS BLOCK-->
+        <div class="personStatus">
+            <!-- start person-->
+            <div class="row">
+                <div class="col-2 border">
+                    Id: 1_27_03_2019_14_34 <br>
+                    Name: Dmitriy Medvedev <br>
+                    Age: 23 <br>
+                    Passport: true <br>
+                    Gender: Male <br>
+                    Payment: 1100$ <br>
+                    Healty: 98%
+                </div>
+                <div class="col-10">
+                    <div class="personStatus__block">
+                        <h3>Migration Service</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 personStatus__block">
+                            <h4>Police Department</h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Gender + Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Passport
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Medical Department</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    Health
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-6">
+                                    Health +Gender
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Bank Department</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    Gender + Payment
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end person-->
+            <!-- start person-->
+            <div class="row">
+                <div class="col-2 border">
+                    Id: 1_27_03_2019_14_34 <br>
+                    Name: Dmitriy Medvedev <br>
+                    Age: 23 <br>
+                    Passport: true <br>
+                    Gender: Male <br>
+                    Payment: 1100$ <br>
+                    Healty: 98%
+                </div>
+                <div class="col-10">
+                    <div class="personStatus__block">
+                        <h3>Migration Service</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 personStatus__block">
+                            <h4>Police Department</h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Gender + Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Passport
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Medical Department</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    Health
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-6">
+                                    Health +Gender
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Bank Department</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    Gender + Payment
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end person-->
+            <!-- start person-->
+            <div class="row">
+                <div class="col-2 border">
+                    Id: 1_27_03_2019_14_34 <br>
+                    Name: Dmitriy Medvedev <br>
+                    Age: 23 <br>
+                    Passport: true <br>
+                    Gender: Male <br>
+                    Payment: 1100$ <br>
+                    Healty: 98%
+                </div>
+                <div class="col-10">
+                    <div class="personStatus__block">
+                        <h3>Migration Service</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 personStatus__block">
+                            <h4>Police Department</h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Gender + Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Passport
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Medical Department</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    Health
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-6">
+                                    Health +Gender
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Bank Department</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    Gender + Payment
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end person-->
+            <!-- start person-->
+            <div class="row">
+                <div class="col-2 border">
+                    Id: 1_27_03_2019_14_34 <br>
+                    Name: Dmitriy Medvedev <br>
+                    Age: 23 <br>
+                    Passport: true <br>
+                    Gender: Male <br>
+                    Payment: 1100$ <br>
+                    Healty: 98%
+                </div>
+                <div class="col-10">
+                    <div class="personStatus__block">
+                        <h3>Migration Service</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 personStatus__block">
+                            <h4>Police Department</h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Gender + Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Passport
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Medical Department</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    Health
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-6">
+                                    Health +Gender
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Bank Department</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    Gender + Payment
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end person-->
+            <!-- start person-->
+            <div class="row">
+                <div class="col-2 border">
+                    Id: 1_27_03_2019_14_34 <br>
+                    Name: Dmitriy Medvedev <br>
+                    Age: 23 <br>
+                    Passport: true <br>
+                    Gender: Male <br>
+                    Payment: 1100$ <br>
+                    Healty: 98%
+                </div>
+                <div class="col-10">
+                    <div class="personStatus__block">
+                        <h3>Migration Service</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 personStatus__block">
+                            <h4>Police Department</h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Gender + Age
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-4">
+                                    Passport
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Medical Department</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    Health
+                                    <div class="personStatus__status"></div>
+                                </div>
+                                <div class="col-6">
+                                    Health +Gender
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 personStatus__block">
+                            <h4>Bank Department</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    Gender + Payment
+                                    <div class="personStatus__status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end person-->
+        </div>
+    </div>
+</div>
+
+<script src="js/index.js"></script>
+
+</body>
+
+</html>

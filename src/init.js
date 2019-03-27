@@ -1,0 +1,1 @@
+const configuration = new Configuration ();
