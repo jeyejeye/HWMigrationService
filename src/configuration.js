@@ -239,7 +239,6 @@ Configuration.prototype.getPersons = function() {
 	
 	for (let i = 0; i < this.valQuantityPersons; i++) {
 		const person = new Person(allPerson.length + 1);
-		
 		person.name = this.arrNames[i].trim();
 		person.age = this.arrAges[i];
 		person.isHasPassport = this.arrIsHasPassport[i];
@@ -252,4 +251,16 @@ Configuration.prototype.getPersons = function() {
 	}
 	
 	return rez;
+}
+
+Configuration.prototype.getData = function() {
+	return {
+		quantityPersons: configuration.quantityPersons,
+		names: configuration.names,
+		ages: configuration.ages,
+		isHasPassport: configuration.isHasPassport,
+		genders: configuration.genders,
+		payments: configuration.payments,
+		healthies: configuration.healthies,
+	}
 }
