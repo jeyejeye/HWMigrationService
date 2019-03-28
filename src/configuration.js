@@ -136,6 +136,13 @@ Configuration.prototype.verifyAges = function () {
 		return false;
 	}
 	
+	for (let i = 0; i < this.arrAges.length; i++) {
+		if (!(this.arrAges[i] >= personRestrictions.age.min && this.arrAges[i] <= personRestrictions.age.max)) {
+			this.errorMessage = `Inputed persons age value "${this.arrAges[i]}" is out of range \[${personRestrictions.age.min}..${personRestrictions.age.max}\]`;
+			return false;
+		}
+	}
+	
 	return true; 
 }
 
@@ -151,6 +158,14 @@ Configuration.prototype.verifyIsHasPassport = function () {
 		this.errorMessage = `Inputed list of passports presence "\[${this.arrIsHasPassport}\]" contains less elements then specified in "quantity of person" ${this.quantityPersons}`;
 		return false;
 	}
+	
+	for (let i = 0; i < this.arrIsHasPassport.length; i++) {
+		if (!(this.arrIsHasPassport[i] == personRestrictions.isHasPassport.min || this.arrIsHasPassport[i] == personRestrictions.isHasPassport.max)) {
+			this.errorMessage = `Inputed persons passport existance "${this.arrIsHasPassport[i]}" is unknown. Passport existance for person must be ${personRestrictions.isHasPassport.min} or ${personRestrictions.isHasPassport.max}`;
+			return false;
+		}
+	}
+	
 	return true; 
 }
 
@@ -167,20 +182,34 @@ Configuration.prototype.verifyGenders = function () {
 		return false;
 	}
 	
+	for (let i = 0; i < this.arrGenders.length; i++) {
+		if (!(this.arrGenders[i] == personRestrictions.gender.min || this.arrGenders[i] == personRestrictions.gender.max)) {
+			this.errorMessage = `Inputed persons gender "${this.arrGenders[i]}" is unknown. Gender must be ${personRestrictions.gender.min} or ${personRestrictions.gender.max}`;
+			return false;
+		}
+	}	
+	
 	return true; 
 }
 
 Configuration.prototype.verifyPayments = function () {
     this.arrPayments = this.payments.split(this.SEPARATOR);
 	
-	if (this.arrGenders.length > this.valQuantityPersons) {
-		this.errorMessage = `Inputed list of payments "\[${this.arrGenders}\]" contains more elements then specified in "quantity of person" ${this.quantityPersons}`;
+	if (this.arrPayments.length > this.valQuantityPersons) {
+		this.errorMessage = `Inputed list of payments "\[${this.arrPayments}\]" contains more elements then specified in "quantity of person" ${this.quantityPersons}`;
 		return false;
 	}
 
-	if (this.arrGenders.length < this.valQuantityPersons) {
-		this.errorMessage = `Inputed list of payments "\[${this.arrGenders}\]" contains less elements then specified in "quantity of person" ${this.quantityPersons}`;
+	if (this.arrPayments.length < this.valQuantityPersons) {
+		this.errorMessage = `Inputed list of payments "\[${this.arrPayments}\]" contains less elements then specified in "quantity of person" ${this.quantityPersons}`;
 		return false;
+	}
+
+	for (let i = 0; i < this.arrPayments.length; i++) {
+		if (!(this.arrPayments[i] >= personRestrictions.payment.min && this.arrPayments[i] <= personRestrictions.payment.max)) {
+			this.errorMessage = `Inputed persons payment "${this.arrPayments[i]}" is out of range \[${personRestrictions.payment.min}..${personRestrictions.payment.max}\]`;
+			return false;
+		}
 	}
 	
 	return true; 
@@ -197,6 +226,13 @@ Configuration.prototype.verifyHealthies = function () {
 	if (this.arrHealthies.length < this.valQuantityPersons) {
 		this.errorMessage = `Inputed list of persons healsy "\[${this.arrHealthies}\]" contains less elements then specified in "quantity of person" ${this.quantityPersons}`;
 		return false;
+	}
+	
+	for (let i = 0; i < this.arrHealthies.length; i++) {
+		if (!(this.arrHealthies[i] >= personRestrictions.healty.min && this.arrHealthies[i] <= personRestrictions.healty.max)) {
+			this.errorMessage = `Inputed persons health value "${this.arrHealthies[i]}" is out of range \[${personRestrictions.healty.min}..${personRestrictions.healty.max}\]`;
+			return false;
+		}
 	}
 	
 	return true; 
