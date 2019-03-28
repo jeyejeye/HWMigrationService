@@ -158,13 +158,17 @@ Configuration.prototype.verifyIsHasPassport = function () {
 		this.errorMessage = `Inputed list of passports presence "\[${this.arrIsHasPassport}\]" contains less elements then specified in "quantity of person" ${this.quantityPersons}`;
 		return false;
 	}
-/*	
+	
 	for (let i = 0; i < this.arrIsHasPassport.length; i++) {
-		if (!(this.arrIsHasPassport[i] == personRestrictions.isHasPassport.min || this.arrIsHasPassport[i] == personRestrictions.isHasPassport.max)) {
+		if (this.arrIsHasPassport[i] === 'false') {
+			this.arrIsHasPassport[i] = false;
+		} else if (this.arrIsHasPassport[i] === 'true') {
+			this.arrIsHasPassport[i] = true;			
+		} else {
 			this.errorMessage = `Inputed persons passport existance "${this.arrIsHasPassport[i]}" is unknown. Passport existance for person must be ${personRestrictions.isHasPassport.min} or ${personRestrictions.isHasPassport.max}`;
 			return false;
 		}
-	} */
+	}
 	
 	return true; 
 }
