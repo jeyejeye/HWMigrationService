@@ -1,27 +1,30 @@
+// Police Department: 
+// checking rule of age (age > 18, 5sec);
+// checking rule of linking gender with age ( male: age must be more than 22, female: age must be more than 18, 8 sec)
+// checking rule of having passport (12sec). 
+
+// Bank Department: 
+// checking rule of linking gender with payment (male: payment must be more than 1000$, female: payment must be more then 950$, 40sec)
 
 
-function verifyPerson (person) {
-        console.log('Обработка заявления...'+ person ) ;
-    let promise = new Promise(function(resolve, reject) {
-        resolve(person)           
-    });
-    return promise;
-}
-
+// Police
 
 function checkAgePolice (person) {
-        if (person.age >= 18) {
-            setTimeout(() => { return Promise.resolve(person);}, 5000); 
-        } else {                
-            setTimeout(() => { return Promise.reject('checkAgePolice');}, 5000); 
-        }
+    console.log('start checkAgePolice'+ person.id )
+    let cond = false;
+            if (person.age >= 18) {
+                cond = true;
+            }     
+    return new Promise(function(resolve){
+        setTimeout(() => {
+              resolve(cond);
+            }, 5000);
+         });
 };
 
 function checkGenderAgePolice (person) {
     let cond = false;
-
-    console.log('checkGenderAgePolice'+ person.id )   
-        
+    console.log('start checkGenderAgePolice'+ person.id  )
         if (person.gender === 'female' && person.age >= 18) {
             cond = true;
         };
@@ -29,39 +32,118 @@ function checkGenderAgePolice (person) {
         if (person.gender === 'male' && person.age >= 22) {
             cond = true;            
         };
-
-        if(cond) {
-           setTimeout(() => { return Promise.resolve(person);}, 8000); 
-        } else {
-          setTimeout(() => { return Promise.reject('checkGenderAgePolice');}, 8000);   
-        }                
+        return new Promise(function(resolve){
+            setTimeout(() => {
+                  resolve(cond);
+                }, 8000);
+             });        
 };
 
 function checkPassportPolice (person) {
-    console.log('checkPassportPolice'+ person.id  )
-
-        if (person.isHasPassport === true) {
-            setTimeout(() => { return Promise.resolve(person);}, 12000); 
-        } else {
-            setTimeout(() => { return Promise.reject('checkPassportPolice');}, 8000);   
-        }
+    console.log('start checkPassportPolice'+ person.id  )
+    return new Promise(function(resolve){
+        setTimeout(() => {
+              resolve(person.isHasPassport);
+            }, 12000);
+         });          
 };
 
-// Вызываем промис
-let person = allPersons[0];
-let person2 = allPersons[1];
 
-verifyPerson(person)
-        .then(checkAgePolice(person))
-        .then(checkGenderAgePolice(person))
-        .then(checkPassportPolice(person))
-        .catch(error => console.log(error.message)); 
 
-verifyPerson(person2)
-        .then(checkAgePolice(person2))
-        .then(checkGenderAgePolice(person2))
-        .then(checkPassportPolice(person2))
-        .catch(error => console.log(error.message)); 
+
+let verifyPolicePromice = function (person) {
+         checkAgePolice(person)
+        .then(response  => console.log("checkAgePolice " + person.name + " " + response ))
+        .then(response  => checkGenderAgePolice(person))
+        .then(response  => console.log("checkGenderAgePolice "+ person.name + " " + response ))
+        .then(response  => checkPassportPolice(person))
+        .then(response  => console.log("checkPassportPolice "+ person.name + " " + response ))
+        .catch(error => console.log(error.message));   
+        return Promise.resolve(true);     
+    }
+
+// Medical Department:
+// checking rule of healthy (healthy > 75%, 15sec);
+// checking rule of linking gender with healthy ( male: healthy must be more than 75%, female: healthy must be more than 85%, 15sec)
+
+function checkHealthy (person) {
+    console.log('start checkHealthy'+ person.id  )
+    let cond = false;
+    if (person.healthy > 75){
+        cond = true;
+    }
+    return new Promise(function(resolve){
+        setTimeout(() => {
+              resolve(cond);
+            }, 15000);
+         });          
+};
+
+function checkHealthyAge (person) {
+    let cond = false;
+    console.log('start checkHealthyAge'+ person.id  )
+        if (person.gender === 'female' && person.healthy > 85) {
+            cond = true;
+        };
+
+        if (person.gender === 'male' && person.healthy > 75) {
+            cond = true;            
+        };
+        return new Promise(function(resolve){
+            setTimeout(() => {
+                  resolve(cond);
+                }, 15000);
+             });        
+};
+
+let verifyMedicalPromice = function (person) {
+    checkHealthy(person)
+   .then(response  => console.log("checkHealthy " + person.name + " " +response ))
+   .then(response  => checkHealthyAge(person))
+   .then(response  => console.log("checkGenderAgePolice "+ person.name + " " + response ))
+   .catch(error => console.log(error.message));   
+   return Promise.resolve(true);     
+}
+
+// Bank Department: 
+// checking rule of linking gender with payment (male: payment must be more than 1000$, female: payment must be more then 950$, 40sec)
+
+function checkBank (person) {
+    console.log('checkBank'+ person.id  )
+    let cond = false;
+    if (person.gender === 'female' && person.payment > 950){
+        cond = true;
+    } 
+    if (person.gender === 'male' && person.payment > 1000){
+        cond = true;
+    }
+    return new Promise(function(resolve){
+        setTimeout(() => {
+              resolve(cond);
+            }, 40000);
+         });          
+};
+
+let checkBankPromice = function (person) {
+    checkBank(person)
+   .then(response  => console.log("checkBank " + person.name + " " + response ))
+   return Promise.resolve(true);     
+}
+
+
+    // Вызываем промис
+const startCheck = function () {
+    for(let i =0; i < allPersons.length; i++) {
+        person = allPersons[i];
+        console.log(person.name);
+        verifyPolicePromice(person);
+        verifyMedicalPromice(person);
+        checkBankPromice(person);              
+    }
+};
+     
+
+
 
 
 
