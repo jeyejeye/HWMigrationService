@@ -11,56 +11,64 @@
 
 function checkAgePolice (person) {
     console.log('start checkAgePolice'+ person.id )
-    let cond = false;
-            if (person.age >= 18) {
-                cond = true;
-            }     
-    return new Promise(function(resolve){
+    
+    return new Promise(function(resolve,reject){
         setTimeout(() => {
-              resolve(cond);
+            if (person.age >= 18) {
+                resolve("age");
+            } else{
+                reject("age")
+            }                
             }, 5000);
          });
 };
 
 function checkGenderAgePolice (person) {
-    let cond = false;
     console.log('start checkGenderAgePolice'+ person.id  )
-        if (person.gender === 'female' && person.age >= 18) {
-            cond = true;
-        };
 
-        if (person.gender === 'male' && person.age >= 22) {
-            cond = true;            
-        };
-        return new Promise(function(resolve){
+        return new Promise(function(resolve,reject){
             setTimeout(() => {
-                  resolve(cond);
+                if (person.gender === 'female' && person.age >= 18) {
+                    resolve("genderAge");
+                } else if (person.gender === 'male' && person.age >= 22) {
+                    resolve("genderAge");          
+                } else { 
+                    reject("genderAge");
+                }                 
                 }, 8000);
              });        
 };
 
 function checkPassportPolice (person) {
     console.log('start checkPassportPolice'+ person.id  )
-    return new Promise(function(resolve){
+    return new Promise(function(resolve,reject){
         setTimeout(() => {
-              resolve(person.isHasPassport);
+            if(person.isHasPassport) {
+                resolve("passport");
+            } else {
+                reject("passport");
+            }              
             }, 12000);
          });          
 };
 
 
 
-
 let verifyPolicePromice = function (person) {
-         checkAgePolice(person)
-        .then(response  => console.log("checkAgePolice " + person.name + " " + response ))
+    return new Promise(function(resolve,reject) {
+        checkAgePolice(person)
+        .then(response  => personsView.renderStatusApproved(person.id,response))
         .then(response  => checkGenderAgePolice(person))
-        .then(response  => console.log("checkGenderAgePolice "+ person.name + " " + response ))
+        .then(response  => personsView.renderStatusApproved(person.id,response))
         .then(response  => checkPassportPolice(person))
-        .then(response  => console.log("checkPassportPolice "+ person.name + " " + response ))
-        .catch(error => console.log(error.message));   
-        return Promise.resolve(true);     
-    }
+        .then(response  => personsView.renderStatusApproved(person.id,response))
+        .then(response  => resolve(true))
+        .catch(error => {
+            personsView.renderStatusRejected(person.id,error)
+            reject(person.id+error);
+        });  
+    });
+}
 
 // Medical Department:
 // checking rule of healthy (healthy > 75%, 15sec);
@@ -68,41 +76,45 @@ let verifyPolicePromice = function (person) {
 
 function checkHealthy (person) {
     console.log('start checkHealthy'+ person.id  )
-    let cond = false;
-    if (person.healthy > 75){
-        cond = true;
-    }
-    return new Promise(function(resolve){
+
+    return new Promise(function(resolve,reject){
         setTimeout(() => {
-              resolve(cond);
+            if (person.healthy > 75){
+                resolve("health");
+            } else {
+                reject("health");
+            }             
             }, 15000);
          });          
 };
 
 function checkHealthyAge (person) {
-    let cond = false;
     console.log('start checkHealthyAge'+ person.id  )
-        if (person.gender === 'female' && person.healthy > 85) {
-            cond = true;
-        };
-
-        if (person.gender === 'male' && person.healthy > 75) {
-            cond = true;            
-        };
-        return new Promise(function(resolve){
+        return new Promise(function(resolve,reject){
             setTimeout(() => {
-                  resolve(cond);
+                if (person.gender === 'female' && person.healthy > 85) {
+                    resolve("healthGender");
+                } else if (person.gender === 'male' && person.healthy > 75) {
+                    resolve("healthGender");           
+                } else {
+                    reject("healthGender");
+                }                  
                 }, 15000);
              });        
 };
 
 let verifyMedicalPromice = function (person) {
-    checkHealthy(person)
-   .then(response  => console.log("checkHealthy " + person.name + " " +response ))
-   .then(response  => checkHealthyAge(person))
-   .then(response  => console.log("checkGenderAgePolice "+ person.name + " " + response ))
-   .catch(error => console.log(error.message));   
-   return Promise.resolve(true);     
+    return new Promise(function(resolve,reject) {
+        checkHealthy(person)
+        .then(response  => personsView.renderStatusApproved(person.id,response))
+        .then(response  => checkHealthyAge(person))
+        .then(response  => personsView.renderStatusApproved(person.id,response))
+        .then(response  => resolve(true))
+        .catch(error => {
+            personsView.renderStatusRejected(person.id,error)
+            reject(person.id+error);
+        }); 
+    });    
 }
 
 // Bank Department: 
@@ -110,35 +122,44 @@ let verifyMedicalPromice = function (person) {
 
 function checkBank (person) {
     console.log('checkBank'+ person.id  )
-    let cond = false;
-    if (person.gender === 'female' && person.payment > 950){
-        cond = true;
-    } 
-    if (person.gender === 'male' && person.payment > 1000){
-        cond = true;
-    }
-    return new Promise(function(resolve){
+  
+    return new Promise(function(resolve,reject){
         setTimeout(() => {
-              resolve(cond);
+            if (person.gender === 'female' && person.payment > 950){
+                resolve("payment");
+            } 
+            if (person.gender === 'male' && person.payment >= 1000){
+                resolve("payment");
+            }
+            reject("payment");
             }, 40000);
          });          
 };
 
 let checkBankPromice = function (person) {
+    return new Promise(function(resolve,reject) {
     checkBank(person)
-   .then(response  => console.log("checkBank " + person.name + " " + response ))
-   return Promise.resolve(true);     
+   .then(response  => personsView.renderStatusApproved(person.id,response))
+   .then(response  => resolve(true))
+        .catch(error => {
+            personsView.renderStatusRejected(person.id,error)
+            reject(person.id + error);
+        }); 
+});   
 }
 
 
     // Вызываем промис
 const startCheck = function () {
-    for(let i =0; i < allPersons.length; i++) {
-        person = allPersons[i];
-        console.log(person.name);
-        verifyPolicePromice(person);
-        verifyMedicalPromice(person);
-        checkBankPromice(person);              
+    for(let i =0; i < allPersons.length; i+=2) {
+        person1 = allPersons[i];
+        person2 = allPersons[i+1];
+        let promise1 = Promise.all([verifyPolicePromice(person1), verifyMedicalPromice(person1), checkBankPromice(person1)]);
+          let promise2 = Promise.all([verifyPolicePromice(person2), verifyMedicalPromice(person2), checkBankPromice(person2)]);
+          Promise.race([promise1, promise2])
+                .then(value => console.log(value))
+                .catch(error => console.error(error));
+                   
     }
 };
      

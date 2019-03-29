@@ -17,13 +17,18 @@ inputPersonForm.addEventListener('click', function(event) {
         personsView.clearPersonsData();
         personsView.renderConfigurationData();
         personsView.renderPersonStatus();
+        document.getElementById("start").disabled = true;
     }
-    if (target.id === 'start') {
+    if (target.id === 'add') {
         let personsData = personsView.getPersonsData();
         configuration.init(personsData.names,personsData.ages,personsData.isHasPassport,personsData.genders,personsData.payments,personsData.healthies,personsData.quantityPersons);
         let personArr = configuration.getPersons();
         personsView.renderConfigurationData(personArr);
         personsView.renderPersonStatus(personArr);
+        document.getElementById("start").disabled = false;
+    }
+    if (target.id === 'start') {
+        startCheck();
     }
 });
 
@@ -148,15 +153,15 @@ PersonsView.prototype.renderPersonStatus = function (personArr){
                         <div class="row">
                             <div class="col-4">
                                 Age
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}age"></div>
                             </div>
                             <div class="col-4">
                                 Gender + Age
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}genderAge"></div>
                             </div>
                             <div class="col-4">
                                 Passport
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}passport"></div>
                             </div>
                         </div>
                     </div>
@@ -165,11 +170,11 @@ PersonsView.prototype.renderPersonStatus = function (personArr){
                         <div class="row">
                             <div class="col-6">
                                 Health
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}health"></div>
                             </div>
                             <div class="col-6">
                                 Health +Gender
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}healthGender"></div>
                             </div>
                         </div>
                     </div>
@@ -178,7 +183,7 @@ PersonsView.prototype.renderPersonStatus = function (personArr){
                         <div class="row">
                             <div class="col-12">
                                 Gender + Payment
-                                <div class="personStatus__status"></div>
+                                <div class="personStatus__status" id="${personArr[i].id}payment"></div>
                             </div>
                         </div>
                     </div>
@@ -188,4 +193,14 @@ PersonsView.prototype.renderPersonStatus = function (personArr){
         }
     }
     this.personStatus.innerHTML = htmlData;
+}
+
+PersonsView.prototype.renderStatusApproved = function (id,name){
+     document.getElementById(id+name).style.backgroundColor = "#5BCF00";
+    //  document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.3)";
+}
+
+PersonsView.prototype.renderStatusRejected = function (id,name){
+    document.getElementById(id+name).style.backgroundColor = "#CB1615";
+    document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
 }
