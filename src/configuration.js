@@ -252,6 +252,7 @@ Configuration.prototype.verify = function() {
 		return false;
 	}
 	if (!this.verifyAges()) {
+
 		return false;
 	}
 	if (!this.verifyIsHasPassport()) {
