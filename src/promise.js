@@ -112,7 +112,7 @@ let verifyMedicalPromice = function (person) {
         .then(response  => resolve(true))
         .catch(error => {
             personsView.renderStatusRejected(person.id,error)
-            reject(person.id+error);
+            reject(person.id + error);
         }); 
     });    
 }
@@ -148,19 +148,36 @@ let checkBankPromice = function (person) {
 });   
 }
 
+let fullPersonVerify = function(person) {
+    return  new Promise(function(resolve,reject) {
+        Promise.all([verifyPolicePromice(person), verifyMedicalPromice(person), checkBankPromice(person)])
+       .then(response  => {
+        personsView.renderRowApproved(person.id);
+           resolve(person.id)})
+            .catch(error => {
+                reject(person.id);
+            }); 
+    });    
+}
 
     // Вызываем промис
 const startCheck = function () {
     for(let i =0; i < allPersons.length; i+=2) {
         person1 = allPersons[i];
         person2 = allPersons[i+1];
-        let promise1 = Promise.all([verifyPolicePromice(person1), verifyMedicalPromice(person1), checkBankPromice(person1)]);
-          let promise2 = Promise.all([verifyPolicePromice(person2), verifyMedicalPromice(person2), checkBankPromice(person2)]);
-          Promise.race([promise1, promise2])
-                .then(value => console.log(value))
-                .catch(error => console.error(error));
-                   
+          Promise.race([
+              fullPersonVerify(person1),
+              fullPersonVerify(person2)
+              ]).then(value => {
+                    personsView.renderRowCancelApproved(value); 
+                    console.log(value);                  
+                })
+                .catch(error => {           
+                    console.log( 'id' + error) ;       
+                    console.error(error);
+                });                   
     }
+    return;
 };
      
 

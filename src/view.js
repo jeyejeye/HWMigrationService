@@ -203,4 +203,16 @@ PersonsView.prototype.renderStatusApproved = function (id,name){
 PersonsView.prototype.renderStatusRejected = function (id,name){
     document.getElementById(id+name).style.backgroundColor = "#CB1615";
     document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
+}   
+
+PersonsView.prototype.renderRowApproved = function (id){
+    document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.3)";
+}
+
+PersonsView.prototype.renderRowRejected = function (id){
+    document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
+}  
+
+PersonsView.prototype.renderRowCancelApproved = function (id){
+    document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.6)";
 }
