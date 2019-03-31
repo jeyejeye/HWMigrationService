@@ -10,133 +10,177 @@
 </head>
 
 <body>
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <h1>Migration Service</h1>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <h1>Migration Service</h1>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="main">
-    <div class="container">
-        <!-- INPUT BLOCK -->
-        <div class="inputPersonForm" id="inputPersonForm">
-            <h2>Add new Persons</h2>
+    <div class="main">
+        <div class="container">
             <div class="row">
-                <div class="col-1">
-                    <h3>Quantity:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="qty" class="inputPersonForm__input" placeholder="qty">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Name:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="name" class="inputPersonForm__input" placeholder="Name">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Age:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="age" class="inputPersonForm__input" placeholder="Age">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Passport:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="passport" class="inputPersonForm__input" placeholder="Passport">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Gender:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="gender" class="inputPersonForm__input" placeholder="gender">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Payment:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="payment" class="inputPersonForm__input" placeholder="payment">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <h3>Health:</h3>
-                </div>
-                <div class="col-8">
-                    <input type="text" id="health" class="inputPersonForm__input" placeholder="Health">
-                </div>
-                <div class="col-3">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <button class="inputPersonForm__button red" id="clear">Clear</button>
-                <button class="inputPersonForm__button blue" id="generate">Generate</button>
-                <button class="inputPersonForm__button purple" id="add">Add</button>
-                <button class="inputPersonForm__button green" id="start" disabled>Start</button>
-            </div>
-        </div>
+                <!-- INPUT BLOCK -->
+                <div class="inputPersonForm" id="inputPersonForm">
+                    <h2>Add new Persons</h2>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Quantity:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="qty" class="inputPersonForm__input" placeholder="qty">
+                        </div>
+                        <div class="col-3">
 
-        <!-- Configuration DATA Block-->
-        <div class="configurationData" id="configurationData">
-            <h2>Configuration</h2>
-            <div class="table__header">
-                <div class="row">
-                    <div class="col-2">ID</div>
-                    <div class="col-2">Name</div>
-                    <div class="col-1">Age</div>
-                    <div class="col-1">Passport</div>
-                    <div class="col-2">Gender</div>
-                    <div class="col-2">Payment</div>
-                    <div class="col-2">Healty</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Name:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="name" class="inputPersonForm__input" placeholder="Name">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Age:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="age" class="inputPersonForm__input" placeholder="Age">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Passport:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="passport" class="inputPersonForm__input" placeholder="Passport">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Gender:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="gender" class="inputPersonForm__input" placeholder="gender">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Payment:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="payment" class="inputPersonForm__input" placeholder="payment">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <h3>Health:</h3>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" id="health" class="inputPersonForm__input" placeholder="Health">
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="inputPersonForm__button red" id="clear">Clear</button>
+                        <button class="inputPersonForm__button blue" id="generate">Generate</button>
+                        <button class="inputPersonForm__button purple" id="add">Add</button>
+                        <button class="inputPersonForm__button green" id="start" disabled>Start</button>
+                    </div>
+                </div>
+                <!-- INPUT BLOCK -->
+                <!-- right Sidebar -->
+                <div class="right__sidebar" id="rightSidebar">
+                    <h2>Visa parameters</h2>
+                    <h4>Age:</h4>
+                    <div class="row">
+                        <col-6>
+                            min male age:
+                            <input type="text" id="minMaleAge" class="inputPersonForm__input"
+                                placeholder="min Age value">
+                        </col-6>
+                        <col-6>
+                            min female age:
+                            <input type="text" id="minFemaleAge" class="inputPersonForm__input"
+                                placeholder="max Age value">
+                        </col-6>
+                    </div>
+                    <h4>Minimum bank account:</h4>
+                    <div class="row">
+                        <col-6>min male:
+                            <input type="text" id="minMaleBank" class="inputPersonForm__input"
+                                placeholder="min Male value">
+                        </col-6>
+                        <col-6>min female:
+                            <input type="text" id="minFemaleBank" class="inputPersonForm__input"
+                                placeholder="min Female value">
+                        </col-6>
+                    </div>
+                    <h4>Health percentage:</h4>
+                    <div class="row">
+
+                        <col-6>min male:
+                            <input type="text" id="minMaleHealth" class="inputPersonForm__input"
+                                placeholder="min Male value">
+                        </col-6>
+                        <col-6>min female:
+                            <input type="text" id="minFemaleHealth" class="inputPersonForm__input"
+                                placeholder="min Female value">
+                        </col-6>
+                    </div>
+                    <button class="inputPersonForm__button blue" id="updateVisaParametrs" disabled>Update</button>
+                </div>
+                <!-- right Sidebar -->
+            </div>
+            <!-- Configuration DATA Block-->
+            <div class="configurationData" id="configurationData">
+                <h2>Configuration</h2>
+                <div class="table__header">
+                    <div class="row">
+                        <div class="col-2">ID</div>
+                        <div class="col-2">Name</div>
+                        <div class="col-1">Age</div>
+                        <div class="col-1">Passport</div>
+                        <div class="col-2">Gender</div>
+                        <div class="col-2">Payment</div>
+                        <div class="col-2">Healty</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- STATUS BLOCK-->
-        <div class="personStatus" id = personStatus >
-            
+            <!-- STATUS BLOCK-->
+            <div class="personStatus" id=personStatus>
+
+            </div>
         </div>
     </div>
-</div>
-<script src="src/faker.js"></script>
-<script src="src/configuration.js"></script>
-<script src="src/defaults.js"></script>
-<script src="src/person.js"></script>
-<script src="src/restrictions.js"></script>
-<script src="src/view.js"></script>
-<script src="src/promise.js"></script>
-<script src="src/init.js"></script>
+    <script src="src/faker.js"></script>
+    <script src="src/configuration.js"></script>
+    <script src="src/defaults.js"></script>
+    <script src="src/person.js"></script>
+    <script src="src/restrictions.js"></script>
+    <script src="src/view.js"></script>
+    <script src="src/promise.js"></script>
+    <script src="src/init.js"></script>
 
 </body>
 

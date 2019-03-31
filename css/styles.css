@@ -137,6 +137,7 @@ button {
   min-height: 90vh;
 }
 .inputPersonForm {
+  min-width: 80%;
   background: white;
   border: 1px solid #F2F2F2;
   border-radius: 4px;
@@ -200,6 +201,32 @@ button {
 .inputPersonForm__button.green:hover {
   background-color: #2A8F00;
 }
+.right__sidebar {
+  min-width:20%;
+  float: right;
+  text-align: center;
+  background: white;
+  border: 1px solid #F2F2F2;  
+  border-radius: 4px;
+  padding: 1em;
+  font-size: 0.9em;
+}
+
+.right__sidebar h4{
+  margin: 1em 0 0.2em 0;
+  font-size: 1.1em;
+}
+.right__sidebar .inputPersonForm__input {
+  width: 95%;
+}
+
+.right__sidebar .inputPersonForm__button {
+  width: 80%;
+}
+
+
+
+
 .table__header {
   font-weight: 700;
   border-bottom: 1px solid #F2F2F2;

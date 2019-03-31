@@ -6,3 +6,12 @@ const personRestrictions = {
 	healty: {min: 65, max: 98},
 	quantityInGroup: {min: 2, max: 5},
 }
+
+let parametersVisa = {
+	minMaleAge: 22,
+	minFemaleAge: 18,
+	minMaleBank: 75,
+	minFemaleBank: 85,
+	minMaleHealth: 1000,
+	minFemaleHealth: 950,
+}
