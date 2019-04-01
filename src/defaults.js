@@ -7,7 +7,8 @@ function getDefaultAge() {
 };
 
 function getDefaultIsHasPassport() {
-	if (getRandomInt(0, 1)) {
+	let rand = Math.round(Math.random() * 100);
+	if (rand < 25) {
 		return personRestrictions.isHasPassport.min;
 	} else {
 		return personRestrictions.isHasPassport.max;

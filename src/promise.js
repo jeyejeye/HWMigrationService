@@ -14,7 +14,7 @@ function checkAgePolice (person) {
     
     return new Promise(function(resolve,reject){
         setTimeout(() => {
-            if (person.age >= 18) {
+            if (person.age >= parametersVisa.minFemaleAge) {
                 resolve("age");
             } else{
                 reject("age")
@@ -28,9 +28,9 @@ function checkGenderAgePolice (person) {
 
         return new Promise(function(resolve,reject){
             setTimeout(() => {
-                if (person.gender === 'female' && person.age >= 18) {
+                if (person.gender === 'female' && person.age >= parametersVisa.minFemaleAge) {
                     resolve("genderAge");
-                } else if (person.gender === 'male' && person.age >= 22) {
+                } else if (person.gender === 'male' && person.age >= parametersVisa.minMaleAge) {
                     resolve("genderAge");          
                 } else { 
                     reject("genderAge");
@@ -79,7 +79,7 @@ function checkHealthy (person) {
 
     return new Promise(function(resolve,reject){
         setTimeout(() => {
-            if (person.healthy > 75){
+            if (person.healthy >= parametersVisa.minMaleHealth){
                 resolve("health");
             } else {
                 reject("health");
@@ -92,9 +92,9 @@ function checkHealthyAge (person) {
     console.log('start checkHealthyAge'+ person.id  )
         return new Promise(function(resolve,reject){
             setTimeout(() => {
-                if (person.gender === 'female' && person.healthy > 85) {
+                if (person.gender === 'female' && person.healthy >= parametersVisa.minMaleHealth) {
                     resolve("healthGender");
-                } else if (person.gender === 'male' && person.healthy > 75) {
+                } else if (person.gender === 'male' && person.healthy >= parametersVisa.minFemaleHealth) {
                     resolve("healthGender");           
                 } else {
                     reject("healthGender");
@@ -125,10 +125,10 @@ function checkBank (person) {
   
     return new Promise(function(resolve,reject){
         setTimeout(() => {
-            if (person.gender === 'female' && person.payment > 950){
+            if (person.gender === 'female' && person.payment >= parametersVisa.minFemaleBank){
                 resolve("payment");
             } 
-            if (person.gender === 'male' && person.payment >= 1000){
+            if (person.gender === 'male' && person.payment >= parametersVisa.minMaleBank){
                 resolve("payment");
             }
             reject("payment");
