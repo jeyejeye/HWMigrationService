@@ -1,6 +1,6 @@
 const inputPersonForm = document.querySelector('#inputPersonForm');
 
-inputPersonForm.addEventListener('click', function(event) {
+inputPersonForm.addEventListener('click', (event) => {
     
     let target = event.target;
     
@@ -33,21 +33,21 @@ inputPersonForm.addEventListener('click', function(event) {
 });
 
 
-function PersonsView () {
-    this.inputQty = document.querySelector("#qty");
-    this.inputName = inputPersonForm.querySelector("#name");
-    this.inputAge = inputPersonForm.querySelector("#age");
-    this.inputPassport = inputPersonForm.querySelector("#passport");
-    this.inputGender = inputPersonForm.querySelector("#gender");
-    this.inputPayment = inputPersonForm.querySelector("#payment");
-    this.inputHealth = inputPersonForm.querySelector("#health");
-    this.configurationData = document.querySelector("#configurationData");
-    this.personStatus = document.querySelector("#personStatus");
+class PersonsView {
+	constructor() {
+	    this.inputQty = document.querySelector("#qty");
+    	this.inputName = inputPersonForm.querySelector("#name");
+    	this.inputAge = inputPersonForm.querySelector("#age");
+    	this.inputPassport = inputPersonForm.querySelector("#passport");
+    	this.inputGender = inputPersonForm.querySelector("#gender");
+    	this.inputPayment = inputPersonForm.querySelector("#payment");
+    	this.inputHealth = inputPersonForm.querySelector("#health");
+    	this.configurationData = document.querySelector("#configurationData");
+    	this.personStatus = document.querySelector("#personStatus");
+	}
 
-
-}
 // personsView.getPersonsData()
-PersonsView.prototype.getPersonsData = function (){
+    getPersonsData(){
     return {
         quantityPersons: this.inputQty.value,
 		names: this.inputName.value,
@@ -57,31 +57,29 @@ PersonsView.prototype.getPersonsData = function (){
 		payments: this.inputPayment.value,
 		healthies: this.inputHealth.value,
     }  
-}
+    }
 
-PersonsView.prototype.renderPersonsData = function (data){
-    this.inputQty.value = data.quantityPersons;
-    this.inputName.value = data.names;
-    this.inputAge.value = data.ages;
-    this.inputPassport.value = data.isHasPassport;
-    this.inputGender.value = data.genders;
-    this.inputPayment.value = data.payments;
-    this.inputHealth.value = data.healthies;
+    renderPersonsData(data) {
+        this.inputQty.value = data.quantityPersons;
+        this.inputName.value = data.names;
+        this.inputAge.value = data.ages;
+        this.inputPassport.value = data.isHasPassport;
+        this.inputGender.value = data.genders;
+        this.inputPayment.value = data.payments;
+        this.inputHealth.value = data.healthies;
+    }
 
-}
+    clearPersonsData() {
+        this.inputQty.value = '';
+        this.inputName.value = '';
+        this.inputAge.value = '';
+        this.inputPassport.value = '';
+        this.inputGender.value = '';
+        this.inputPayment.value = '';
+        this.inputHealth.value = '';
+    }
 
-PersonsView.prototype.clearPersonsData = function (){
-    this.inputQty.value = '';
-    this.inputName.value = '';
-    this.inputAge.value = '';
-    this.inputPassport.value = '';
-    this.inputGender.value = '';
-    this.inputPayment.value = '';
-    this.inputHealth.value = '';
-    
-}
-
-PersonsView.prototype.renderConfigurationData = function (personArr){
+    renderConfigurationData(personArr) {
     let htmlData = `<h2>Configuration</h2>
     <div class="table__header">
         <div class="row">
@@ -123,10 +121,10 @@ PersonsView.prototype.renderConfigurationData = function (personArr){
     }
     
     configurationData.innerHTML = htmlData;
-}
+    }
 
 
-PersonsView.prototype.renderPersonStatus = function (personArr){
+    renderPersonStatus(personArr) {
     let htmlData = '';
     this.personStatus.style.visibility = "hidden";
 
@@ -193,26 +191,26 @@ PersonsView.prototype.renderPersonStatus = function (personArr){
         }
     }
     this.personStatus.innerHTML = htmlData;
-}
+    }
 
-PersonsView.prototype.renderStatusApproved = function (id,name){
-     document.getElementById(id+name).style.backgroundColor = "#5BCF00";
-    //  document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.3)";
-}
+    renderStatusApproved(id,name) {
+        document.getElementById(id+name).style.backgroundColor = "#5BCF00";
+    }
 
-PersonsView.prototype.renderStatusRejected = function (id,name){
-    document.getElementById(id+name).style.backgroundColor = "#CB1615";
-    document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
-}   
+    renderStatusRejected(id,name) {
+        document.getElementById(id+name).style.backgroundColor = "#CB1615";
+        document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
+    }   
 
-PersonsView.prototype.renderRowApproved = function (id){
-    document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.3)";
-}
+    renderRowApproved(id) {
+        document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.3)";
+    }
 
-PersonsView.prototype.renderRowRejected = function (id){
-    document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
-}  
+    renderRowRejected(id) {
+        document.getElementById(id).style.backgroundColor = "rgba(255, 0, 0,0.3)";
+    }  
 
-PersonsView.prototype.renderRowCancelApproved = function (id){
-    document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.6)";
+    renderRowCancelApproved(id) {
+        document.getElementById(id).style.backgroundColor = "rgba(0, 255, 0,0.6)";
+    }
 }
